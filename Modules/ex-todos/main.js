@@ -1,3 +1,6 @@
+import { fetchTodos } from './api.js';
+import { createTodoItem } from './todos.js';
+
 /** @type {HTMLFormElement} */
 const formEl = document.querySelector('.todos-form');
 
@@ -19,15 +22,17 @@ formEl.addEventListener('submit', (event) => {
 
   const value = inputEl.value;
 
-  const itemEl = createTodoItem({
-    id: Math.random(),
-    title: value,
-    completed: false
-  });
-
-  listEl.append(itemEl);
-
-  inputEl.value = '';
+  // import('./todos.js').then(({ createTodoItem }) => {
+    const itemEl = createTodoItem({
+      id: Math.random(),
+      title: value,
+      completed: false
+    });
+  
+    listEl.append(itemEl);
+  
+    inputEl.value = '';
+  // })
 });
 
 /*

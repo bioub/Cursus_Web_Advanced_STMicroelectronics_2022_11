@@ -5,7 +5,7 @@
  * @param {boolean} todo.completed
  * @returns {HTMLDivElement}
  */
-function createTodoItem(todo) {
+export function createTodoItem(todo) {
   /*
   <div class="todos-item" data-todo-id="0.353454634">
     <input type="checkbox" checked>
