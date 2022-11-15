@@ -7,7 +7,7 @@ if (selectedProductLocalStorage) {
   selectedProduct = JSON.parse(selectedProductLocalStorage);
 }
 
-export let productsList = [];
+let productsList = [];
 
 /** @param {HTMLElement} mainEl */
 export function products(mainEl) {

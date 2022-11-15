@@ -1,4 +1,4 @@
-import { getRandomInt } from './random.mjs'; // import fichier local
+import { getRandomInt } from './random.js'; // import fichier local
 import readline from 'readline'; // import binaire de Node.js
 import chalk from 'chalk'; // import node_modules/chalk
 

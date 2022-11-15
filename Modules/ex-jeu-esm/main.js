@@ -1,4 +1,4 @@
-import { Jeu } from "./jeu.mjs";
+import { Jeu } from "./jeu.js";
 
 const game = new Jeu();
 game.jouer();

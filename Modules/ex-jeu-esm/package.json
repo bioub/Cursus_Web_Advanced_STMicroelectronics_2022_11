@@ -1,6 +1,13 @@
 {
+  "type": "module",
   "dependencies": {
-    "chalk": "^5.1.2",
-    "lodash": "^4.0.0"
+    "chalk": "^5.1.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.1.0"
+  },
+  "scripts": {
+    "start": "node main.js",
+    "test": "mocha --recursive"
   }
 }
