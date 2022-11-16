@@ -35,3 +35,20 @@ const trainer: HelloInterface = new Trainer('Romain', 'JS');
 console.log(trainer.hello());
 
 
+
+
+
+// class User {
+//   private username: string;
+//   constructor(username: string) {
+//     this.username = username;
+//   }
+// }
+
+class User {
+  constructor(public username: string) {}
+
+}
+
+const user = new User('toto');
+console.log(user.username);
