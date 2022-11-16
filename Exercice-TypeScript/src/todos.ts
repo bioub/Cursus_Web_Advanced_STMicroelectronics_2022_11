@@ -1,11 +1,6 @@
-/**
- * @param {object} todo
- * @param {number} todo.id
- * @param {string} todo.title
- * @param {boolean} todo.completed
- * @returns {HTMLDivElement}
- */
-export function createTodoItem(todo) {
+import { Todo } from "./model";
+
+export function createTodoItem(todo: Todo): HTMLDivElement {
   /*
   <div class="todos-item" data-todo-id="0.353454634">
     <input type="checkbox" checked>
@@ -29,12 +24,12 @@ export function createTodoItem(todo) {
 
   const itemEl = document.createElement('div');
   itemEl.className = "todos-item";
-  itemEl.dataset.todoId = todo.id;
+  itemEl.dataset.todoId = String(todo.id);
 
   const checkboxEl = document.createElement('input');
   checkboxEl.type = 'checkbox';
   checkboxEl.checked = todo.completed;
-
+  
   const spanEl = document.createElement('span');
   spanEl.innerText = todo.title;
 

@@ -1,4 +1,6 @@
-export async function fetchTodos() {
+import { Todo } from "./model";
+
+export async function fetchTodos(): Promise<Todo[]> {
   const res = await fetch("https://jsonplaceholder.typicode.com/todos", {
     method: "GET",
   });

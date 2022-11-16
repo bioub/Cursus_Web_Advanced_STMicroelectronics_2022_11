@@ -6,7 +6,7 @@ const coords = {
 
 // coords.z = 3; les objets TypeScript ne sont pas extensibles par défaut
 
-function showCoords(coords: { x: number; y: number, z?: number }) {
+function showCoords(coords: { x: number; readonly y: number, z?: number }) {
   console.log('x: ' + coords.x);
 }
 

@@ -6,9 +6,9 @@ function logPrimitive(val: primitive) {
 }
 
 
-showPrimitive(123);
-showPrimitive('234');
-showPrimitive(true);
+logPrimitive(123);
+logPrimitive('234');
+logPrimitive(true);
 // showPrimitive([]); erreur
 
 type Coords = {
@@ -21,3 +21,10 @@ function logCoords(val: Coords) {
 }
 
 logCoords({x: 1, y: 2})
+
+type cbWithCallback = (value: string) => void;
+
+function withCallback(cb: cbWithCallback) {
+  cb('ABC');
+}
+
