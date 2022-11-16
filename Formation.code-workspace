@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "Exercice-Build"
+		},
+		{
+			"path": "Modules"
+		},
+		{
+			"path": "JavaScript-Async"
+		},
+		{
+			"path": "TypeScript"
+		},
+		{
+			"path": "Exercice-TypeScript"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Modules"
+	}
+}

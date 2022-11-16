@@ -11,20 +11,41 @@ const indexHtmlPath = path.resolve(srcPath, "index.html");
 const indexHtmlDistPath = path.resolve(distPath, "index.html");
 const appJsDistPath = path.resolve(distPath, "app.js");
 
-async function build() {
+async function rmAndMkdir() {
   await fs.rm(distPath, { force: true, recursive: true });
   await fs.mkdir(distPath);
+}
 
+async function buildJs() {
   // Exercice 3
   // utiliser fs.readFile pour lire les fichiers
   // horlogeJsPath et indexJsPath
   // et fs.appendFile pour écrire dans appJsDistPath
-  const bufferHorloge = await fs.readFile(horlogeJsPath);
-  const bufferIndex = await fs.readFile(indexJsPath);
+  // const bufferHorloge = await fs.readFile(horlogeJsPath);
+  // const bufferIndex = await fs.readFile(indexJsPath);
+  // pile d'appels
+  // ^
+  // |
+  // |[readFile] ⟳          [readFile] ⟳          [appendFile]
+  // +---------------------------------------------------------> temps
+
+  const [bufferHorloge, bufferIndex] = await Promise.all([
+    fs.readFile(horlogeJsPath),
+    fs.readFile(indexJsPath)
+  ]);
+
+  // pile d'appels
+  // ^
+  // |
+  // |[readFile][readFile] ⟳             [appendFile]
+  // +---------------------------------------------------------> temps
+
   await fs.appendFile(appJsDistPath, bufferHorloge);
   await fs.appendFile(appJsDistPath, bufferIndex);
   // await fs.writeFile(appJsDistPath, Buffer.concat([bufferHorloge, bufferIndex]));
+}
 
+async function buildHtml() {
   // Exercice 4
   // fs.readFile et fs.writeFile pour écrire
   // buffer.toString('utf-8') pour convertir un buffer en string
@@ -41,6 +62,16 @@ async function build() {
     .replace('<script src="./js/index.js"></script>', "");
 
   await fs.writeFile(indexHtmlDistPath, contentIndexHtml);
+}
+
+async function build() {
+  try {
+    await rmAndMkdir();
+    await buildJs();
+    await buildHtml();
+  } catch (err) {
+    console.log('Err : ' + err.message);
+  }
 }
 
 build();
