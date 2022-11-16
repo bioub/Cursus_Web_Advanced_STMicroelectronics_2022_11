@@ -6,7 +6,7 @@ values.forEach((letter, index) => {
 });
 
 // typer nos callback avec : () => returnType
-function withCallback(cb: (value: string) => void) {
+function withCallback2(cb: (value: string) => void) {
   cb('ABC');
 }
 

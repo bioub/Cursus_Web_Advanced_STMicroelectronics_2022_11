@@ -11,12 +11,12 @@ logPrimitive('234');
 logPrimitive(true);
 // showPrimitive([]); erreur
 
-type Coords = {
+type Coords2 = {
   x: 1,
   y: 2,
 };
 
-function logCoords(val: Coords) {
+function logCoords(val: Coords2) {
   console.log(val);
 }
 
