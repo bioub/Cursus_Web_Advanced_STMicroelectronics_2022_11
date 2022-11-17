@@ -1,4 +1,7 @@
-export function createTodoItem(todo) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createTodoItem = void 0;
+function createTodoItem(todo) {
     /*
     <div class="todos-item" data-todo-id="0.353454634">
       <input type="checkbox" checked>
@@ -42,6 +45,7 @@ export function createTodoItem(todo) {
     itemEl.append(checkboxEl, ' ', spanEl, ' ', buttonEl);
     return itemEl;
 }
+exports.createTodoItem = createTodoItem;
 // pile d'appel
 // ^
 // |

@@ -1,5 +1,7 @@
-import { fetchTodos } from './api.js';
-import { createTodoItem } from './todos.js';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const api_js_1 = require("./api.js");
+const todos_js_1 = require("./todos.js");
 const formEl = document.querySelector('.todos-form');
 const inputEl = document.querySelector('.todos-form-input');
 const listEl = document.querySelector('.todos-list');
@@ -12,7 +14,7 @@ formEl.addEventListener('submit', (event) => {
     event.preventDefault();
     const value = inputEl.value;
     // import('./todos.js').then(({ createTodoItem }) => {
-    const itemEl = createTodoItem({
+    const itemEl = (0, todos_js_1.createTodoItem)({
         id: Math.random(),
         title: value,
         completed: false,
@@ -44,9 +46,9 @@ listEl.addEventListener('click', (event) => {
         (_a = target.closest('.todos-item')) === null || _a === void 0 ? void 0 : _a.remove();
     }
 });
-fetchTodos().then((todos) => {
+(0, api_js_1.fetchTodos)().then((todos) => {
     for (const todo of todos) {
-        const itemEl = createTodoItem(todo);
+        const itemEl = (0, todos_js_1.createTodoItem)(todo);
         listEl.append(itemEl);
     }
 });
