@@ -22,7 +22,7 @@ timeout(1000, "ABC").then((val) => {
   console.log("1s", val);
 });
 
-// await timeout(1000);
+// const val = await timeout(1000, "ABC");
 
 class UserService {
   findAll() {
@@ -40,7 +40,7 @@ service
   .then((users) => {
     console.log(users);
   })
-  .catch(() => {
+  .catch((err) => {
     // reject
   });
 

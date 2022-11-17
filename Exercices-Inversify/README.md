@@ -31,7 +31,7 @@ This class should contain :
 ```
 private data!: any;
 async get(url: string) {
-  return await this.data;
+  return this.data;
 }
 setFakeData(data: any) {
   this.data = data;
