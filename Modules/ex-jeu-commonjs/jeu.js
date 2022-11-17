@@ -1,5 +1,6 @@
 // importer ./random
 const readline = require("readline");
+const { getRandomInt } = require("./random");
 
 
 class Jeu {
@@ -11,7 +12,7 @@ class Jeu {
       input: process.stdin,
       output: process.stdout,
     });
-    this.entierAlea = Random.getRandomInt(min, max);
+    this.entierAlea = getRandomInt(min, max);
     this.essais = [];
   }
   jouer() {
@@ -44,3 +45,4 @@ class Jeu {
 }
 
 // exporter uniquement la classe Jeu
+module.exports = Jeu;
