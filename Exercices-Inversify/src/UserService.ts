@@ -1,8 +1,12 @@
-import { HttpClient } from './HttpClient';
+import { inject, injectable } from 'inversify';
+import { HttpClientInterface } from './HttpClientInterface';
 import { User } from './model';
 
+@injectable()
 export class UserService {
-  constructor(private httpClient: HttpClient) {}
+  @inject(HttpClientInterface) private httpClient!: HttpClientInterface
+
+  // constructor(@inject(HttpClientInterface) private httpClient: HttpClientInterface) {}
 
   async fetchUsers() {
     return await this.httpClient.get<User[]>('https://jsonplaceholder.typicode.com/users');
