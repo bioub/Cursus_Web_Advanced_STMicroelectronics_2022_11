@@ -1,5 +1,5 @@
-const fs = require("fs/promises");
-const path = require("path");
+const fs = require("node:fs/promises");
+const path = require("node:path");
 const md5 = require("md5");
 const { minify } = require("terser");
 
@@ -71,6 +71,7 @@ async function build() {
     await buildHtml();
   } catch (err) {
     console.log('Err : ' + err.message);
+    process.exit(1);
   }
 }
 

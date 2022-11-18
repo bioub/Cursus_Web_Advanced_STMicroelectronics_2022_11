@@ -11,5 +11,6 @@
 // const { hello } = require('./hello');
 // console.log(hello('Romain'));
 
+// si module.exports = hello;
 const hello = require('./hello');
 console.log(hello('Romain'));

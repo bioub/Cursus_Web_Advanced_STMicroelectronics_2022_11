@@ -1,0 +1,21 @@
+{
+  "name": "exercice-traitement-image",
+  "version": "1.0.0",
+  "description": "Le but de cet exercice est de parcourir les images du répertoire `src` et de les copier dans un répertoire `dest` en appliquant les opérations suivantes :",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "author": "Romain Bohdanowicz <romain.bohdanowicz@formation.tech>",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "globby": "^13.1.2",
+    "imagemin": "^8.0.1",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "sharp": "^0.31.2"
+  }
+}

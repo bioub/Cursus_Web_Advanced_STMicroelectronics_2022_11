@@ -1,4 +1,4 @@
-const config = require('./config'); // l'extention peut etre .js ou .json
+const config = require('./config'); // l'extension peut etre .js ou .json
 console.log(config);
 
 
