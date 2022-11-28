@@ -2,7 +2,7 @@
   "devDependencies": {
     "http-server": "^14.1.1",
     "md5": "^2.3.0",
-    "terser": "^5.15.1"
+    "terser": "^5.16.0"
   },
   "scripts": {
     "serve:dev": "http-server src",

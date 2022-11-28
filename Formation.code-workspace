@@ -26,6 +26,9 @@
 		},
 		{
 			"path": "Exercice-Traitement-Image"
+		},
+		{
+			"path": "Exercice-Express"
 		}
 	],
 	"settings": {

@@ -27,6 +27,11 @@ export const container = new Container();
 // container.bind(FileWriter).to(FileWriter);
 // container.bind(Logger).to(Logger);
 
-container.bind(FileWriter).toSelf().inSingletonScope();
+// container.bind(FileWriter).toSelf().inSingletonScope();
+
+container.bind(FileWriter).toDynamicValue(() => {
+  return new FileWriter('tmp.log');
+}).inSingletonScope();
+
 container.bind(Logger).toSelf().inSingletonScope();
 container.bind(WriterInterface).toService(FileWriter);
