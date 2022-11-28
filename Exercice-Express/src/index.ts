@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import morgan from 'morgan';
+import mongoose from 'mongoose';
 import todosRouter from "./todos/router";
 
 const app = express();
@@ -26,7 +27,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-
-app.listen(8080, () => {
-  console.log("Server started on port 8080");
+mongoose.connect('mongodb://localhost:27017/test').then(() => {
+  app.listen(8080, () => {
+    console.log("Server started on port 8080");
+  });
 });

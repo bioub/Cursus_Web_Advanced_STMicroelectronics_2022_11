@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { ApiError } from "../model";
-import TodoService, { Todo, TodoBody } from "./model";
+import TodoService, { Todo, TodoBody } from "./model-mongoose";
 
 export async function todoListCtrl(
   req: Request,
-  res: Response<Todo[]>,
+  res: Response,
   next: NextFunction
 ) {
   try {
@@ -17,7 +16,7 @@ export async function todoListCtrl(
 
 export async function todoCreateCtrl(
   req: Request<any, any, TodoBody>,
-  res: Response<Todo>,
+  res: Response,
   next: NextFunction
 ) {
   try {
@@ -31,7 +30,7 @@ export async function todoCreateCtrl(
 
 export async function todoShowCtrl(
   req: Request<{ todoId: string }>,
-  res: Response<Todo | ApiError>,
+  res: Response,
   next: NextFunction
 ) {
   try {
@@ -50,7 +49,7 @@ export async function todoShowCtrl(
 
 export async function todoDeleteCtrl(
   req: Request<{ todoId: string }>,
-  res: Response<Todo | ApiError>,
+  res: Response,
   next: NextFunction
 ) {
   try {
@@ -69,7 +68,7 @@ export async function todoDeleteCtrl(
 
 export async function todoUpdateCtrl(
   req: Request<{ todoId: string }, any, TodoBody>,
-  res: Response<Todo | ApiError>,
+  res: Response,
   next: NextFunction
 ) {
   try {
@@ -91,7 +90,7 @@ export async function todoUpdateCtrl(
 
 export async function todoReplaceCtrl(
   req: Request<{ todoId: string }, any, TodoBody>,
-  res: Response<Todo | ApiError>,
+  res: Response,
   next: NextFunction
 ) {
   try {
