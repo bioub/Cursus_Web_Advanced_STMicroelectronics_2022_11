@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import morgan from 'morgan';
 import todosRouter from "./todos/router";
 
@@ -11,6 +11,21 @@ app.use(morgan('dev'));
 // });
 
 app.use("/api/todos", todosRouter); // charge toutes les routes de todos
+
+app.use((req, res, next) => {
+  res.statusCode = 404;
+  res.json({
+    msg: 'Not found'
+  });
+});
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  res.statusCode = 500;
+  res.json({
+    msg: err.message
+  });
+});
+
 
 app.listen(8080, () => {
   console.log("Server started on port 8080");
