@@ -1,7 +1,7 @@
 import { Todo } from "./model";
 
 export async function fetchTodos(): Promise<Todo[]> {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos", {
+  const res = await fetch("http://localhost:8080/api/todos", {
     method: "GET",
   });
   const todos = await res.json();
