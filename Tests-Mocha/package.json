@@ -8,6 +8,6 @@
     "typescript": "^4.9.3"
   },
   "scripts": {
-    "test": "mocha --register ts-node/register src/**/*.spec.ts"
+    "test": "mocha -n loader=ts-node/esm --extension ts src/**/*.spec.ts"
   }
 }
