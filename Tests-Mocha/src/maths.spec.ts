@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { sum } from "./maths";
+import { square, sum } from "./maths";
 
 describe('maths.ts', () => {
 
@@ -10,7 +10,7 @@ describe('maths.ts', () => {
     });
 
     it('should add negative numbers', () => {
-       
+      expect(sum(-1, -2)).to.equals(-3);
     });
     
   });
@@ -18,7 +18,7 @@ describe('maths.ts', () => {
   describe('square function', () => {
 
     it('should returns square value', () => {
-  
+      expect(square(2)).to.equals(4);
     });
     
   });
