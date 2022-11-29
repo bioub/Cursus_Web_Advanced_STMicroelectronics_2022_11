@@ -1,4 +1,5 @@
 import express, { Router } from "express";
+import { authenticate } from "../middleware";
 import {
   todoCreateCtrl,
   todoDeleteCtrl,
@@ -12,9 +13,9 @@ const todosRouter = Router();
 
 todosRouter.get("", todoListCtrl);
 todosRouter.get("/:todoId", todoShowCtrl);
-todosRouter.post("", express.json(), todoCreateCtrl);
-todosRouter.delete("/:todoId", todoDeleteCtrl);
-todosRouter.put("/:todoId", express.json(), todoReplaceCtrl);
-todosRouter.patch("/:todoId", express.json(), todoUpdateCtrl);
+todosRouter.post("", authenticate, express.json(), todoCreateCtrl);
+todosRouter.delete("/:todoId", authenticate, todoDeleteCtrl);
+todosRouter.put("/:todoId", authenticate, express.json(), todoReplaceCtrl);
+todosRouter.patch("/:todoId", authenticate, express.json(), todoUpdateCtrl);
 
 export default todosRouter;

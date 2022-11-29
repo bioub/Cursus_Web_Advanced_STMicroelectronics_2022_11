@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import todosRouter from "./todos/router";
+import usersRouter from "./users/router";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(morgan('dev'));
 // });
 
 app.use("/api/todos", todosRouter); // charge toutes les routes de todos
+app.use("/api/users", usersRouter);
 
 app.use((req, res, next) => {
   res.statusCode = 404;

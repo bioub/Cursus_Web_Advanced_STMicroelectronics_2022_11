@@ -37,7 +37,7 @@ export async function todoShowCtrl(
     const todo = await TodoService.findById(req.params.todoId);
 
     if (!todo) {
-      // req.notFoundMsg = 'Todo not found';
+      req.notFoundMsg = 'Todo not found';
       return next();
     }
 
@@ -56,7 +56,7 @@ export async function todoDeleteCtrl(
     const todo = await TodoService.findByIdAndDelete(req.params.todoId);
 
     if (!todo) {
-      // req.notFoundMsg = 'Todo not found';
+      req.notFoundMsg = 'Todo not found';
       return next();
     }
 
@@ -78,7 +78,7 @@ export async function todoUpdateCtrl(
     );
 
     if (!todo) {
-      // req.notFoundMsg = 'Todo not found';
+      req.notFoundMsg = 'Todo not found';
       return next();
     }
 
@@ -100,7 +100,7 @@ export async function todoReplaceCtrl(
     );
 
     if (!todo) {
-      // req.notFoundMsg = 'Todo not found';
+      req.notFoundMsg = 'Todo not found';
       return next();
     }
 
