@@ -2,11 +2,10 @@ import sinon from "sinon";
 import sinonChai from "sinon-chai";
 import chai, { expect } from "chai";
 import { userLoginCtrl } from "./controller";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import User from "./model";
 
 chai.use(sinonChai);
-
 
 describe("user controllers", () => {
   // before(() => {
@@ -22,25 +21,25 @@ describe("user controllers", () => {
   //   // ici il faudrait importer un jeu de donnée de test dans mongo
   // });
 
-  describe("userLoginCtrl function",  () => {
+  describe("userLoginCtrl function", () => {
     it("should respond 401 if bad credentials", async () => {
       const req = {
         body: {
-          username: 'bad-username',
-          password: 'bad-password'
+          username: "bad-username",
+          password: "bad-password",
         },
-      } as any;
+      } as any; // eslint-disable-line
 
       const res = {
         json: sinon.spy(),
-      } as any;
+      } as any; // eslint-disable-line
 
       const next = sinon.spy();
 
       const mock = sinon.mock(User);
-      mock.expects('findOne').once().resolves(null);
+      mock.expects("findOne").once().resolves(null);
 
-      await userLoginCtrl(req, res, next)
+      await userLoginCtrl(req, res, next);
       expect(res.statusCode).to.equal(401);
       expect(res.json).to.have.been.calledOnceWith({ msg: "Bad credentials" });
       sinon.verifyAndRestore();
@@ -49,24 +48,26 @@ describe("user controllers", () => {
     it("should respond token if good credentials", async () => {
       const req = {
         body: {
-          username: 'good-username',
-          password: 'good-password'
+          username: "good-username",
+          password: "good-password",
         },
-      } as any;
+      } as any; // eslint-disable-line
 
       const res = {
         json: sinon.spy(),
-      } as any;
+      } as any; // eslint-disable-line
 
       const next = sinon.spy();
 
       const mock = sinon.mock(User);
-      mock.expects('findOne').once().resolves({_id: '32536476746643564', username: 'good-username'});
+      mock
+        .expects("findOne")
+        .once()
+        .resolves({ _id: "32536476746643564", username: "good-username" });
 
-      await userLoginCtrl(req, res, next)
-      expect(res.json.firstCall.args[0].msg).to.equals('Logged in')
+      await userLoginCtrl(req, res, next);
+      expect(res.json.firstCall.args[0].msg).to.equals("Logged in");
       sinon.verifyAndRestore();
     });
   });
-
 });

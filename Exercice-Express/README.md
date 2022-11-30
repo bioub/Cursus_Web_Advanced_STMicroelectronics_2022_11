@@ -16,7 +16,6 @@ Dans le controller `register` insérer le user reçu dans le body de la requête
 
 Dans le controller `login` vérifier avec la méthode `findOne` du modèle que le `username` et password reçu dans le body de la requête correspondent a un utilisateur, répondre en JSON `{msg: 'Logged in'}` ou `{msg: 'Bad credentials'}` si le username ou password n'existent pas en base.
 
-
 # Test automatisées
 
 ## authenticate (doubles avec sinon)
@@ -44,5 +43,3 @@ Vérifier que l'appel de `res.json` se fasse correctement et que le `statusCode`
 
 Tester `userLoginCtrl` de `users/controller.ts` en remplacer avec Sinon la
 méthode `findOne` de `User` et gérer le fait qu'elle retourne une promesse.
-
-

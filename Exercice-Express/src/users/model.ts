@@ -13,6 +13,6 @@ const schema = new Schema({
   },
 });
 
-const User = model('User', schema);
+const User = model("User", schema);
 
 export default User;

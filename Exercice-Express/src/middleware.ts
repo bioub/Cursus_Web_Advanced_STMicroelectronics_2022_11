@@ -5,7 +5,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
   if (!req.headers.authorization) {
     res.statusCode = 401;
     return res.json({
-      msg: 'Unauthorized',
+      msg: "Unauthorized",
     });
   }
 
@@ -14,7 +14,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
   if (!tokens.includes(token)) {
     res.statusCode = 401;
     return res.json({
-      msg: 'Unauthorized',
+      msg: "Unauthorized",
     });
   }
 

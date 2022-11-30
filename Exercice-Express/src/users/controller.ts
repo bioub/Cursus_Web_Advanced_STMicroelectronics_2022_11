@@ -22,6 +22,7 @@ export async function userRegisterCtrl(
 export async function userLoginCtrl(
   req: Request,
   res: Response,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction
 ) {
   // {username: 'toto', password: '123'}

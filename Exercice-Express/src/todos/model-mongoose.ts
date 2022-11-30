@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 export interface Todo {
   id: number;
@@ -14,9 +14,9 @@ const schema = new mongoose.Schema({
   },
   completed: {
     type: Boolean,
-  }
+  },
 });
 
-const TodoService = mongoose.model('Todo', schema);
+const TodoService = mongoose.model("Todo", schema);
 
 export default TodoService;

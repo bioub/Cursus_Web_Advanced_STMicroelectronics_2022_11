@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import TodoService, { Todo, TodoBody } from "./model-mongoose";
+import TodoService, { TodoBody } from "./model-mongoose";
 
 export async function todoListCtrl(
   req: Request,
@@ -15,7 +15,7 @@ export async function todoListCtrl(
 }
 
 export async function todoCreateCtrl(
-  req: Request<any, any, TodoBody>,
+  req: Request<unknown, unknown, TodoBody>,
   res: Response,
   next: NextFunction
 ) {
@@ -37,7 +37,7 @@ export async function todoShowCtrl(
     const todo = await TodoService.findById(req.params.todoId);
 
     if (!todo) {
-      req.notFoundMsg = 'Todo not found';
+      req.notFoundMsg = "Todo not found";
       return next();
     }
 
@@ -56,7 +56,7 @@ export async function todoDeleteCtrl(
     const todo = await TodoService.findByIdAndDelete(req.params.todoId);
 
     if (!todo) {
-      req.notFoundMsg = 'Todo not found';
+      req.notFoundMsg = "Todo not found";
       return next();
     }
 
@@ -67,7 +67,7 @@ export async function todoDeleteCtrl(
 }
 
 export async function todoUpdateCtrl(
-  req: Request<{ todoId: string }, any, TodoBody>,
+  req: Request<{ todoId: string }, unknown, TodoBody>,
   res: Response,
   next: NextFunction
 ) {
@@ -78,7 +78,7 @@ export async function todoUpdateCtrl(
     );
 
     if (!todo) {
-      req.notFoundMsg = 'Todo not found';
+      req.notFoundMsg = "Todo not found";
       return next();
     }
 
@@ -89,7 +89,7 @@ export async function todoUpdateCtrl(
 }
 
 export async function todoReplaceCtrl(
-  req: Request<{ todoId: string }, any, TodoBody>,
+  req: Request<{ todoId: string }, unknown, TodoBody>,
   res: Response,
   next: NextFunction
 ) {
@@ -100,7 +100,7 @@ export async function todoReplaceCtrl(
     );
 
     if (!todo) {
-      req.notFoundMsg = 'Todo not found';
+      req.notFoundMsg = "Todo not found";
       return next();
     }
 

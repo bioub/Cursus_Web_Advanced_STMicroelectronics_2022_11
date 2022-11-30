@@ -60,7 +60,10 @@ class TodoService {
     return todo;
   }
 
-  static async findByIdAndUpdate(id: string, body: TodoBody): Promise<Todo | undefined> {
+  static async findByIdAndUpdate(
+    id: string,
+    body: TodoBody
+  ): Promise<Todo | undefined> {
     const todo = await this.findById(id);
 
     if (!todo) {
@@ -79,7 +82,10 @@ class TodoService {
     return todo;
   }
 
-  static async findOneAndReplace(filter: { _id: string }, body: TodoBody): Promise<Todo | undefined> {
+  static async findOneAndReplace(
+    filter: { _id: string },
+    body: TodoBody
+  ): Promise<Todo | undefined> {
     const id = filter._id;
     const todo = await this.findById(id);
 
@@ -97,7 +103,6 @@ class TodoService {
 
     return todo;
   }
-
 }
 
 export default TodoService;

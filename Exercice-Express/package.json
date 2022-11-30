@@ -18,10 +18,14 @@
     "@types/sinon": "^10.0.13",
     "@types/sinon-chai": "^3.2.9",
     "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
     "chai": "^4.3.7",
+    "eslint": "^8.28.0",
     "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
     "nyc": "^15.1.0",
+    "prettier": "^2.8.0",
     "sinon": "^15.0.0",
     "sinon-chai": "^3.7.0",
     "ts-node": "^10.9.1",
@@ -33,6 +37,8 @@
     "watch": "tsc --watch",
     "start:dev": "nodemon --exec \"ts-node src/index.ts\" -e ts",
     "test": "mocha -n loader=ts-node/esm --extension ts \"src/**/*.spec.ts\"",
-    "coverage": "nyc --reporter html --reporter text -x \"src/**/*.spec.ts\" yarn test"
+    "coverage": "nyc --reporter html --reporter text -x \"src/**/*.spec.ts\" yarn test",
+    "lint": "eslint src",
+    "format": "prettier \"**/*.{ts,js,json,md}\" --write"
   }
 }
