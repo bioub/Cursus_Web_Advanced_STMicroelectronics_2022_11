@@ -9,7 +9,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
     });
   }
 
-  const token = req.headers.authorization?.slice(7);
+  const token = req.headers.authorization.slice(7);
 
   if (!tokens.includes(token)) {
     res.statusCode = 401;
