@@ -11,6 +11,7 @@ describe('rmAndMkdir function', () => {
   // risque de bug si plusieurs test en parallèle
   // it('should remove and mkdir', async () => {
   //   await rmAndMkdir('tmp');
+  //   expect('tmp').to.exist()
   //   expect(existsSync('tmp')).to.be.true;
   // });
 
