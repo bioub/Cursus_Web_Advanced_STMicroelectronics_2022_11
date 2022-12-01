@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const json5 = require('json5');
+const { BannerPlugin } = require('webpack');
 
 function configFactory(_, { mode }) {
   /** @type {import("webpack").Configuration} */
@@ -13,12 +15,24 @@ function configFactory(_, { mode }) {
       new HtmlWebpackPlugin({
         template: "./src/index.html",
       }),
+      new BannerPlugin('Copyright STMicroelectronics')
     ],
     module: {
       rules: [
         {
+          test: /\.json5$/,
+          type: 'json',
+          parser: {
+            parse: json5.parse,
+          }
+        },
+        {
           test: /\.ts$/,
           loader: "ts-loader",
+        },
+        {
+          test: /\.scss$/,
+          use: ['style-loader', 'css-loader', 'sass-loader']
         },
       ],
     },

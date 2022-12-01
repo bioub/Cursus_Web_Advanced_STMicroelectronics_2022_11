@@ -1,3 +1,4 @@
+import './index.scss';
 import { Horloge } from './horloge';
 
 const divElt = document.querySelector('.horloge') as HTMLDivElement;
