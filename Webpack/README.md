@@ -1,66 +1,44 @@
-# Exercice Build
+# Exercice Webpack
 
-## Principe
+## Exercice 1
 
-Ecrire un script de build dans le style de votre choix (synchrone, asynchrone, promise, async/await)
+Ajouter un commentaire dans le fichier `config.json`
 
-## Avant de commencer
+Le build échoue à présent.
 
-* Installer les dépendances : `npm install`
-* Pour démarrer le serveur de dev : `npm run serve:dev`
-* Pour builder : `npm run build`
-* Pour démarrer le serveur de prod (fichiers buildés) : `npm run serve:prod`
+Installer le paquet npm `json5` et changer la config webpack en vous inspirant de :
+https://github.com/webpack/webpack/tree/main/examples/custom-json-modules
 
+Pour que le parseur d'un fichier dont l'extension est `.json` utilise la lib json5.
 
-## Etapes
+Bonus : faire fonctionner les extensions `.json5`, à voir avec TypeScript...
 
-### 0 - Mettre à jour les dépendances avec npm
+## Exercice 2
 
-Utiliser `npm audit` pour connaître les dépendances directes ou indirectes dont une version contient une faille de sécurité connue.
+En vous inspirant de la doc sur BannerPlugin :
+https://webpack.js.org/plugins/banner-plugin/
 
-Utiliser `npm outdated` pour connaître les dépendances ayant besoin d'être mises à jour parmi nos dépendances directes : `del`, `fs-extra`, `http-server`, `md5` `uglify-es`.
+Ajouter le copyright suivant aux fichiers buildés : `Copyright STMicroelectronics`
 
-Mettre à jour vers la version `WANTED` en utilisant `npm update`.
+## Exercice 3
 
-Supprimer la bibliothèque `del` avec la commande `npm rm`, pour afficher l'aide `npm rm --help`. Supprimer ensuite le `require` de `del` dans le fichier `build.js`
+Créer un fichier `index.css` avec comme contenu :
 
-Supprimer la bibliothèque `fs-extra` avec la commande `npm rm`, remplacer ensuite le `require` de `fs-extra` par `require('fs/promises')`
+```css
+.horloge {
+  background-color: yellow;
+}
+```
 
-Remplacer `uglify-es` par `terser` (attention à l'installer dans les `devDependencies`. Remplacer le `require` de `uglify-es` par `const { minify } = require("terser");`
+Le charger dans `index.ts` en utilisant un import :
 
-Migrer les dépendances restantes via `npm install`.
+```ts
+import './index.css';
+````
 
-### 1 - Supprimer le dossier dist (s'il existe)
+Utiliser les loaders : `css-loader` et `style-loader` pour transformer cet `import` en balise `style`
 
-Vous pouvez utiliser la méthode `rm` de `fs/promises` avec les options `force` et `recursive` (pas besoin de tester qu'il existe, `rm` ne génèrant pas d'erreur lorsque le dossier/fichier n'existe pas)
+Doc : https://webpack.js.org/loaders/css-loader
 
-### 2 - Créer le dossier dist
+Bonus : dans le build de production uniquement, ne pas utiliser `style-loader` mais générer un fichier css séparer à charger avec un balise link. Pour cela utiliser mini-css-extract-plugin : https://webpack.js.org/plugins/mini-css-extract-plugin/
 
-Vous pouvez utiliser la méthode `mkdir` de `fs/promises`
-
-### 3 - Builder le JS
-
-Copier le contenu des fichiers `src/js/horloge.js` et `src/js/index.js` dans un fichier `dist/app.js`, dans cet ordre.
-
-### 4 - Builder le HTML
-
-Copier le fichier `src/index.html` dans `dist/index.html` en remplaçant les balises script de dev par celle de prod (`app.js`).
-
-Indication : readFile retourne un type `Buffer`, pour le convertir en `string` : `buffer.toString()`
-
-### 5 - Minifier le JS (Optionnel)
-
-Utiliser la bibliothèque `terser` pour réduire le poids du fichier js de prod : [https://www.npmjs.com/package/terser#api-reference](https://www.npmjs.com/package/terser#api-reference)
-
-### 6 - Renommer le fichier JS (Optionnel)
-
-Utiliser le module md5 pour signer le fichier `app.js` et remplacer son nom par le checksum md5 (pour invalider le cache), exemple : `app.5da8aa7126701c9840f99f8e9fa54976.js`
-
-### 7 - Ajouter des options (Optionnel)
-
-Installer et utiliser `yargs` ou `minimist` pour qu'on puisse lancer la commande avec les options suivantes :
-
-* `--minify` pour minifier le JS ou non
-* `--hash` pour ajouter le checksum dans le nom du fichier ou non
-
-Exemple : `node build --minify --hash`
