@@ -1,22 +1,27 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-/** @type {import("webpack").Configuration} */
-const config = {
-  entry: './src/js/index.js',
-  output: {
-    clean: true,
-    filename: 'app.js'
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
-  ]
-  // entry
-  // output
-  // plugins
-  // module
-  // mode
-};
+function configFactory(_, { mode }) {
+  /** @type {import("webpack").Configuration} */
+  const config = {
+    devtool: mode !== 'production' ? 'source-map' : false,
+    entry: './src/js/index.js',
+    output: {
+      clean: true,
+      filename: 'app.[contenthash].js'
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './src/index.html'
+      })
+    ]
+    // entry
+    // output
+    // plugins
+    // module
+    // mode
+  };
 
-module.exports = config;
+  return config;
+}
+
+module.exports = configFactory;

@@ -32,9 +32,12 @@
 		},
 		{
 			"path": "Tests-Mocha"
+		},
+		{
+			"path": "Webpack"
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "Modules"
+		"liveServer.settings.multiRootWorkspaceName": "Webpack"
 	}
 }
