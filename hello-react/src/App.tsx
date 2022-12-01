@@ -5,6 +5,8 @@
 */
 
 import React from 'react';
+import Clock from './Clock';
+import Hello from './Hello';
 
 // Sans React (juste avec le DOM)
 // function App() {
@@ -35,12 +37,23 @@ import React from 'react';
 // }
 
 // Avec React + JSX
-function App() {
-  const now = new Date();
+// function App() {
+//   const now = new Date();
 
+//   return (
+//     <div className="Hello">
+//       Hello <span id="name">Romain</span>, il est {now.toLocaleTimeString()}
+//     </div>
+//   );
+// }
+
+function App() {
   return (
-    <div className="Hello">
-      Hello <span id="name">Romain</span>, il est {now.toLocaleTimeString()}
+    <div className="App">
+      <Hello name="Romain" /> {/* React.createElement(Hello, { name: 'Romain' }) */}
+      <Clock format="HH:mm:ss" />
+      <Clock format="HH:mm:ss" />
+      <Clock format="HH:mm:ss" />
     </div>
   );
 }
