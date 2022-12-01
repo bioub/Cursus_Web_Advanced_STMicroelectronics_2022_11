@@ -35,6 +35,9 @@
 		},
 		{
 			"path": "Webpack"
+		},
+		{
+			"path": "hello-react"
 		}
 	],
 	"settings": {
