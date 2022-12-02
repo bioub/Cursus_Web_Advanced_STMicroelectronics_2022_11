@@ -4,7 +4,7 @@
 </div>
 */
 
-import React from 'react';
+import React, { Component } from 'react';
 import Clock from './Clock';
 import Counter from './Counter';
 import ExHelloWorld from './ExHelloWorld';
@@ -52,33 +52,52 @@ import UserForm from './UserForm';
 //   );
 // }
 
-function App() {
-  return (
-    <div className="App">
-      <h2>Hello</h2>
-      <Hello name="Romain" age={37} isActive /> {/* React.createElement(Hello, { name: 'Romain' }) */}
-      
-      <h2>Clock</h2>
-      <Clock format="HH:mm:ss" />
-      <Clock format="HH:mm:ss" />
-      <Clock format="HH:mm:ss" />
+type AppState = {
+  name: string;
+}
 
-      <h2>Counter</h2>
-      <Counter />
+class App extends Component<unknown, AppState>  {
+  state: Readonly<AppState> = {
+    name: 'Titi',
+  };
 
-      <h2>UserForm</h2>
-      <UserForm />
+  handleValueChange = (value: string) => {
+    this.setState({
+      name: value,
+    });
+  }
 
-      <h2>ExHelloWorld</h2>
-      <ExHelloWorld />
-
-      <h2>ExMultiStateButton</h2>
-      <ExMultiStateButton items={['Toto', 'Titi', 'Tata']} />
-
-      <h2>Select</h2>
-      <Select items={['Toto', 'Titi', 'Tata']} />
-    </div>
-  );
+  render() {
+    const { name } = this.state;
+    return (
+      <div className="App">
+        <h2>Hello</h2>
+        <Hello name={name} age={37} isActive /> {/* React.createElement(Hello, { name: 'Romain' }) */}
+        
+        <h2>Clock</h2>
+        <Clock format="HH:mm:ss" />
+        <Clock format="HH:mm:ss" />
+        <Clock format="HH:mm:ss" />
+  
+        <h2>Counter</h2>
+        <Counter />
+  
+        <h2>UserForm</h2>
+        <UserForm />
+  
+        <h2>ExHelloWorld</h2>
+        <ExHelloWorld />
+  
+        <h2>ExMultiStateButton</h2>
+        <ExMultiStateButton items={['Toto', 'Titi', 'Tata']} />
+        <p>Vous avez sélectionné : {name}</p>
+  
+        <h2>Select</h2>
+        <Select items={['Toto', 'Titi', 'Tata']} value={name} onValueChange={this.handleValueChange} />
+        <p>Vous avez sélectionné : {name}</p>
+      </div>
+    );
+  }
 }
 
 export default App;

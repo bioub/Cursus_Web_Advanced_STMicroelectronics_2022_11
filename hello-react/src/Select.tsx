@@ -7,16 +7,16 @@ import React, { Component } from 'react';
 
 type SelectProps = {
   items: string[];
+  value: string;
+  onValueChange(value: string): void;
 };
 
 type SelectState = {
-  value: string;
   isMenuOpen: boolean;
 };
 
 class Select extends Component<SelectProps, SelectState> {
   state: Readonly<SelectState> = {
-    value: this.props.items[0],
     isMenuOpen: false,
   };
 
@@ -25,11 +25,15 @@ class Select extends Component<SelectProps, SelectState> {
     this.setState({
       isMenuOpen: !isMenuOpen,
     });
-  }
+  };
+
+  handleItemClick = (value: string) => {
+    this.props.onValueChange(value);
+  };
 
   render() {
-    const { items } = this.props;
-    const { value, isMenuOpen } = this.state;
+    const { value, items } = this.props;
+    const { isMenuOpen } = this.state;
 
     // let menuJsx = null;
 
@@ -57,11 +61,17 @@ class Select extends Component<SelectProps, SelectState> {
     //   </div>
     // );
 
-    const itemsJsx = items.map((el) => <div key={el} className={styles.item}>{el}</div>);
+    const itemsJsx = items.map((el) => (
+      <div key={el} className={styles.item} onClick={() => this.handleItemClick(el)}>
+        {el}
+      </div>
+    ));
 
     return (
       <div className="Select">
-        <div className={styles.control} onClick={this.handleControlClick}>Selected Value</div>
+        <div className={styles.control} onClick={this.handleControlClick}>
+          {value}
+        </div>
         {isMenuOpen && <div className={styles.menu}>{itemsJsx}</div>}
       </div>
     );
