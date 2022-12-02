@@ -1,13 +1,29 @@
-import { Component } from 'react';
+import { ChangeEvent, Component } from 'react';
 
-class ExHelloWorld extends Component {
+type ExHelloWorldProps = {};
+type ExHelloWorldState = {
+  name: string;
+};
+
+class ExHelloWorld extends Component<ExHelloWorldProps, ExHelloWorldState> {
+  state: Readonly<ExHelloWorldState> = {
+    name: 'Romain',
+  };
+
+  handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+
   render() {
+    const { name } = this.state;
     return (
       <div className="ExHelloWorld">
         <label>Name:</label>
-        <input type="text" value="YOUR_NAME" />
+        <input type="text" value={name} onChange={this.handleChange} />
         <hr />
-        <h1>Hello YOU_NAME !</h1>
+        <h1>Hello {name}!</h1>
       </div>
     );
   }

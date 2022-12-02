@@ -1,8 +1,35 @@
-import { Component } from "react";
+import { Component } from 'react';
 
-class ExMultiStateButton extends Component {
+type ExMultiStateButtonProps = {
+  items: string[];
+};
+
+type ExMultiStateButtonState = {
+  value: string;
+};
+
+class ExMultiStateButton extends Component<ExMultiStateButtonProps, ExMultiStateButtonState> {
+  state: Readonly<ExMultiStateButtonState> = {
+    value: this.props.items[1],
+  };
+
+  handleClick = () => {
+    const { items } = this.props;
+    const { value } = this.state;
+    const index = items.indexOf(value);
+
+    this.setState({
+      value: items[(index + 1) % items.length],
+    });
+  };
+
   render() {
-    return <button className="ExMultiStateButton">ExMultiStateButton</button>;
+    const { value } = this.state;
+    return (
+      <button className="ExMultiStateButton" onClick={this.handleClick}>
+        {value}
+      </button>
+    );
   }
 }
 
