@@ -1,8 +1,10 @@
 type HelloProps = {
-  name?: string;
+  name: string;
+  age?: number;
+  isActive?: boolean
 };
 
-function Hello({ name }: HelloProps) {
+function Hello({ name, age = 0, isActive = false }: HelloProps) {
   return <div className="Hello">Hello {name}</div>;
 }
 

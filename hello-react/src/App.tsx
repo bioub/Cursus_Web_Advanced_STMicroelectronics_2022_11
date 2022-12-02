@@ -52,7 +52,7 @@ import UserForm from './UserForm';
 function App() {
   return (
     <div className="App">
-      <Hello name="Romain" /> {/* React.createElement(Hello, { name: 'Romain' }) */}
+      <Hello name="Romain" age={37} isActive /> {/* React.createElement(Hello, { name: 'Romain' }) */}
       <Clock format="HH:mm:ss" />
       <Clock format="HH:mm:ss" />
       <Clock format="HH:mm:ss" />
