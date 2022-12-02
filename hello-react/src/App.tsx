@@ -6,7 +6,9 @@
 
 import React from 'react';
 import Clock from './Clock';
+import Counter from './Counter';
 import Hello from './Hello';
+import UserForm from './UserForm';
 
 // Sans React (juste avec le DOM)
 // function App() {
@@ -54,6 +56,8 @@ function App() {
       <Clock format="HH:mm:ss" />
       <Clock format="HH:mm:ss" />
       <Clock format="HH:mm:ss" />
+      <Counter />
+      <UserForm />
     </div>
   );
 }

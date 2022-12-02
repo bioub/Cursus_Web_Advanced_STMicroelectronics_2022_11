@@ -9,12 +9,16 @@ type ClockState = {
 };
 
 class Clock extends Component<ClockProps, ClockState> {  
-  constructor(props: ClockProps) {
-    super(props);
-    this.state = {
-      now: new Date(),
-    };
-  }
+  // constructor(props: ClockProps) {
+  //   super(props);
+  //   this.state = {
+  //     now: new Date(),
+  //   };
+  // }
+  state: Readonly<ClockState> = {
+    now: new Date(),
+  };
+
   componentDidMount(): void {
     setInterval(() => {
       this.setState({
