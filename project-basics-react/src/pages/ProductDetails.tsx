@@ -1,43 +1,51 @@
 // TODO utiliser les modules CSS si possible
 import './ProductDetails.css';
-import { Component } from "react";
+import { Component } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import { Doc, fetchProducts } from '../api/products';
 
-class ProductDetails extends Component {
+type Props = RouteComponentProps<{ productId: string }>;
+type State = {
+  product?: Doc;
+};
+
+class ProductDetails extends Component<Props, State> {
+  state: Readonly<State> = {};
+
+  async componentDidMount() {
+    const products = await fetchProducts();
+
+    const productId = this.props.match.params.productId;
+    const product = products.find((p) => p._id === productId);
+
+    // TODO faire quelque chose si le produit n'est pas trouvé
+
+    this.setState({
+      product,
+    });
+  }
+
   render() {
-    return <div className="ProductDetails">
-      <div className="phone-image">
-        <img className="phone" src="img/phones/dell-streak-7.0.jpg" />
+    if (!this.state.product) {
+      return <div className="ProductDetails">Loading...</div>;
+    }
+
+    return (
+      <div className="ProductDetails">
+        <div className="phone-image">
+          <img className="phone" src={'/' + this.state.product.images[0]} />
+        </div>
+        <h1>{this.state.product.name}</h1>
+        <p>{this.state.product.description}</p>
+        <ul className="phone-thumbs">
+          {this.state.product.images.map((img) => (
+            <li>
+              <img key={img} src={'/' + img} />
+            </li>
+          ))}
+        </ul>
       </div>
-      <h1>Dell Streak 7</h1>
-      <p>
-        Introducing Dell™ Streak 7. Share photos, videos and movies together.
-        It’s small enough to carry around, big enough to gather around. Android™
-        2.2-based tablet with over-the-air upgrade capability for future OS
-        releases. A vibrant 7-inch, multitouch display with full Adobe® Flash
-        10.1 pre-installed. Includes a 1.3 MP front-facing camera for
-        face-to-face chats on popular services such as Qik or Skype. 16 GB of
-        internal storage, plus Wi-Fi, Bluetooth and built-in GPS keeps you in
-        touch with the world around you. Connect on your terms. Save with 2-year
-        contract or flexibility with prepaid pay-as-you-go plans
-      </p>
-      <ul className="phone-thumbs">
-        <li>
-          <img src="img/phones/dell-streak-7.0.jpg" />
-        </li>
-        <li>
-          <img src="img/phones/dell-streak-7.1.jpg" />
-        </li>
-        <li>
-          <img src="img/phones/dell-streak-7.2.jpg" />
-        </li>
-        <li>
-          <img src="img/phones/dell-streak-7.3.jpg" />
-        </li>
-        <li>
-          <img src="img/phones/dell-streak-7.4.jpg" />
-        </li>
-      </ul>
-    </div>;
+    );
   }
 }
 
