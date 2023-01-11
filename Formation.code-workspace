@@ -38,6 +38,9 @@
 		},
 		{
 			"path": "hello-react"
+		},
+		{
+			"path": "project-basics-react"
 		}
 	],
 	"settings": {
