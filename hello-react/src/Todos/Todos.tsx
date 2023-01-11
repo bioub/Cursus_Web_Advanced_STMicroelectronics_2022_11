@@ -37,11 +37,17 @@ class Todos extends Component<TodosProps, TodosState> {
     });
   };
 
+  handleDelete = (todo: Todo) => {
+    this.setState({
+      todos: this.state.todos.filter((el) => el.id !== todo.id),
+    });
+  };
+
   render() {
     return (
       <div className="Todos">
         <TodoForm newValue={this.state.newTodo} onNewValueChange={this.handleNewValueChange} onAdd={this.handleAdd} />
-        <TodosList items={this.state.todos} />
+        <TodosList items={this.state.todos} onDelete={this.handleDelete} />
       </div>
     );
   }

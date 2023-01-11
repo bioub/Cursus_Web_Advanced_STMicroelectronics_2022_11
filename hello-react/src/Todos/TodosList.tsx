@@ -3,11 +3,12 @@ import TodoItem from "./TodoItem";
 
 type TodosListProps = {
   items: Todo[],
+  onDelete(todo: Todo): void;
 }
 
-function TodosList({ items }: TodosListProps) {
+function TodosList({ items, onDelete }: TodosListProps) {
   return <div className="TodosList">
-    {items.map((item) => <TodoItem key={item.id} item={item} />)}
+    {items.map((item) => <TodoItem key={item.id} item={item} onDelete={onDelete} />)}
   </div>;
 }
 
