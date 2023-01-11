@@ -1,11 +1,37 @@
 type HelloProps = {
   name: string;
   age?: number;
-  isActive?: boolean
+  isActive?: boolean;
 };
 
+// function Hello(props: HelloProps) {
+//   const name = props.name;
+//   return <div className="Hello">Hello {props.name}</div>;
+// }
+
 function Hello({ name, age = 0, isActive = false }: HelloProps) {
-  return <div className="Hello">Hello {name}</div>;
+
+  // let spanEl;
+  
+  // if (isActive) {
+  //   spanEl = <span> (active)</span>;
+  // }
+
+  // const spanEl = isActive && <span> (active)</span>;
+
+  // return (
+  //   <div className="Hello">
+  //     Hello {name}
+  //     {spanEl}
+  //   </div>
+  // );
+
+  return (
+    <div className="Hello">
+      Hello {name}
+      {isActive && <span> (active)</span>}
+    </div>
+  );
 }
 
 export default Hello;

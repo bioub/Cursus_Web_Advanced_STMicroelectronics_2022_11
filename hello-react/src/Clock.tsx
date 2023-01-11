@@ -27,7 +27,7 @@ class Clock extends Component<ClockProps, ClockState> {
     }, 1000);
   }
   render() {
-    const { format } = this.props;
+    const { format = 'HH:mm:ss' } = this.props;
     const { now } = this.state;
 
     return <div className="Clock">{now.toLocaleTimeString()} (au format {format})</div>;

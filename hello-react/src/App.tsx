@@ -11,6 +11,7 @@ import ExHelloWorld from './ExHelloWorld';
 import ExMultiStateButton from './ExMultiStateButton';
 import Hello from './Hello';
 import Select from './Select';
+import Todos from './Todos/Todos';
 import UserForm from './UserForm';
 
 // Sans React (juste avec le DOM)
@@ -72,8 +73,9 @@ class App extends Component<unknown, AppState>  {
     return (
       <div className="App">
         <h2>Hello</h2>
-        <Hello name={name} age={37} isActive /> {/* React.createElement(Hello, { name: 'Romain' }) */}
-        
+        <Hello name={name} age={37} isActive /> {/* React.createElement(Hello, { name: 'Romain', age: 37, isActive: true }) */}
+        <Hello name={name} />
+
         <h2>Clock</h2>
         <Clock format="HH:mm:ss" />
         <Clock format="HH:mm:ss" />
@@ -95,6 +97,9 @@ class App extends Component<unknown, AppState>  {
         <h2>Select</h2>
         <Select items={['Toto', 'Titi', 'Tata']} value={name} onValueChange={this.handleValueChange} />
         <p>Vous avez sélectionné : {name}</p>
+
+        <h2>Todos</h2>
+        <Todos />
       </div>
     );
   }
