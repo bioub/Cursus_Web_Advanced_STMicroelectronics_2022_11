@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "env": {
+    "node": true,
+    "commonjs": true,
+    "es2020": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 11
+  },
+  "rules": {}
+}

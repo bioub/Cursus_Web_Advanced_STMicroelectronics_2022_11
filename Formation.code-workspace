@@ -41,6 +41,9 @@
 		},
 		{
 			"path": "project-basics-react"
+		},
+		{
+			"path": "correction-projet-server"
 		}
 	],
 	"settings": {
